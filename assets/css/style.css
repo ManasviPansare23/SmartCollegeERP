@@ -1,0 +1,39 @@
+body{
+background:linear-gradient(135deg,#eef2ff,#f8fafc);
+font-family:'Segoe UI',sans-serif;
+min-height:100vh;
+}
+
+.navbar{
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+.card{
+border:none;
+border-radius:24px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+transition:0.3s;
+background:white;
+}
+
+.card:hover{
+transform:translateY(-6px);
+}
+
+.welcome-card{
+background:linear-gradient(135deg,#4f46e5,#6366f1);
+color:white;
+}
+
+.welcome-card p{
+color:#e5e7eb;
+}
+
+.module-card{
+min-height:250px;
+}
+
+.btn{
+border-radius:12px;
+font-weight:600;
+}
