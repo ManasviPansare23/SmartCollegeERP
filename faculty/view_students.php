@@ -10,7 +10,21 @@ if(!isset($_SESSION['faculty_name']))
 
 include("../includes/db.php");
 
-$sql = "SELECT * FROM students";
+$search = "";
+
+if(isset($_GET['search']))
+{
+    $search = $_GET['search'];
+
+    $sql = "SELECT * FROM students
+            WHERE name LIKE '%$search%'
+            OR roll_no LIKE '%$search%'
+            OR department LIKE '%$search%'";
+}
+else
+{
+    $sql = "SELECT * FROM students";
+}
 
 $result = mysqli_query($conn,$sql);
 
@@ -57,13 +71,53 @@ class="btn btn-light">
 
 <div class="card p-4">
 
-<div class="d-flex justify-content-between align-items-center mb-4">
+<div class="mb-4">
 
 <h2>
 👨‍🎓 Students List
 </h2>
 
 </div>
+
+<form method="GET" class="mb-4">
+
+<div class="row align-items-center">
+
+<div class="col-md-8">
+
+<input type="text"
+name="search"
+class="form-control form-control-lg"
+placeholder="🔍 Search by Name, Roll No or Department"
+value="<?php echo $search; ?>">
+
+</div>
+
+<div class="col-md-2">
+
+<button type="submit"
+class="btn btn-success btn-lg w-100">
+
+🔍 Search
+
+</button>
+
+</div>
+
+<div class="col-md-2">
+
+<a href="view_students.php"
+class="btn btn-secondary btn-lg w-100">
+
+↺ Reset
+
+</a>
+
+</div>
+
+</div>
+
+</form>
 
 <div class="table-responsive">
 

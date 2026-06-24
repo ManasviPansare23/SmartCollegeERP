@@ -8,6 +8,28 @@ if(!isset($_SESSION['name']))
     exit();
 }
 
+include("../includes/db.php");
+
+$student_count =
+mysqli_num_rows(
+mysqli_query($conn,"SELECT * FROM students")
+);
+
+$faculty_count =
+mysqli_num_rows(
+mysqli_query($conn,"SELECT * FROM faculty")
+);
+
+$attendance_count =
+mysqli_num_rows(
+mysqli_query($conn,"SELECT * FROM attendance")
+);
+
+$marks_count =
+mysqli_num_rows(
+mysqli_query($conn,"SELECT * FROM marks")
+);
+
 ?>
 
 <!DOCTYPE html>
@@ -76,7 +98,7 @@ Manage Students, Faculty and Academic Records
 
 <h2>👨‍🎓</h2>
 
-<h3>1</h3>
+<h3><?php echo $student_count; ?></h3>
 
 <p>Total Students</p>
 
@@ -90,7 +112,7 @@ Manage Students, Faculty and Academic Records
 
 <h2>👨‍🏫</h2>
 
-<h3>1</h3>
+<h3><?php echo $faculty_count; ?></h3>
 
 <p>Total Faculty</p>
 
@@ -104,7 +126,7 @@ Manage Students, Faculty and Academic Records
 
 <h2>📅</h2>
 
-<h3>2</h3>
+<h3><?php echo $attendance_count; ?></h3>
 
 <p>Attendance Records</p>
 
@@ -118,7 +140,7 @@ Manage Students, Faculty and Academic Records
 
 <h2>📝</h2>
 
-<h3>3</h3>
+<h3><?php echo $marks_count; ?></h3>
 
 <p>Marks Records</p>
 

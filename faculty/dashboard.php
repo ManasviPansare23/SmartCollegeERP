@@ -7,7 +7,22 @@ if(!isset($_SESSION['faculty_name']))
     header("Location: login.php");
     exit();
 }
+include("../includes/db.php");
 
+$student_count =
+mysqli_num_rows(
+mysqli_query($conn,"SELECT * FROM students")
+);
+
+$attendance_count =
+mysqli_num_rows(
+mysqli_query($conn,"SELECT * FROM attendance")
+);
+
+$marks_count =
+mysqli_num_rows(
+mysqli_query($conn,"SELECT * FROM marks")
+);
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +74,51 @@ Manage Attendance, Marks and Students
 </p>
 
 </div>
+<div class="row mb-4">
 
+<div class="col-md-4">
+
+<div class="card p-3 text-center">
+
+<h2>👨‍🎓</h2>
+
+<h3><?php echo $student_count; ?></h3>
+
+<p>Total Students</p>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="card p-3 text-center">
+
+<h2>📅</h2>
+
+<h3><?php echo $attendance_count; ?></h3>
+
+<p>Attendance Records</p>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="card p-3 text-center">
+
+<h2>📝</h2>
+
+<h3><?php echo $marks_count; ?></h3>
+
+<p>Marks Records</p>
+
+</div>
+
+</div>
+
+</div>
 <div class="row">
 
 <div class="col-md-4 mb-4">
